@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const baseURL = "https://panini8-backend-ie4d.onrender.com"
   const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        `${baseURL}/api/auth/login`,
         form
       );
       localStorage.setItem("token", res.data.token);

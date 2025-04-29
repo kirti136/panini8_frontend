@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const BlogPage = () => {
+  const baseURL = "https://panini8-backend-ie4d.onrender.com"
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({ title: "", content: "" });
   const [editingId, setEditingId] = useState(null);
@@ -9,7 +10,7 @@ const BlogPage = () => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/posts");
+      const res = await axios.get(`${baseURL}/api/posts`);
       setPosts(res.data);
     } catch (err) {
       console.error("Error fetching posts:", err);
@@ -31,12 +32,12 @@ const BlogPage = () => {
     try {
       if (editingId) {
         await axios.put(
-          `http://localhost:3000/api/posts/${editingId}`,
+          `${baseURL}/api/posts/${editingId}`,
           form,
           config
         );
       } else {
-        await axios.post("http://localhost:3000/api/posts", form, config);
+        await axios.post(`${baseURL}/api/posts`, form, config);
       }
       setForm({ title: "", content: "" });
       setEditingId(null);
@@ -54,7 +55,7 @@ const BlogPage = () => {
   const handleDelete = async (id) => {
     const config = { headers: { Authorization: `${token}` } };
     try {
-      await axios.delete(`http://localhost:3000/api/posts/${id}`, config);
+      await axios.delete(`${baseURL}/api/posts/${id}`, config);
       fetchPosts();
     } catch (err) {
       console.error("Error deleting post:", err);

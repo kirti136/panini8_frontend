@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const baseURL = "https://panini8-backend-ie4d.onrender.com";
   const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
 
@@ -12,7 +13,9 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/auth/register", form);
+      await axios.post(`${baseURL}/api/auth/register`, form, {
+        withCredentials: true,
+      });
       alert("Signup successful! Please login.");
       navigate("/login");
     } catch (err) {
