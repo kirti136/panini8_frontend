@@ -26,7 +26,7 @@ const BlogPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { headers: { Authorization: `Bearer ${token}` } };
+    const config = { headers: { Authorization: `${token}` } };
 
     try {
       if (editingId) {
@@ -52,7 +52,7 @@ const BlogPage = () => {
   };
 
   const handleDelete = async (id) => {
-    const config = { headers: { Authorization: `Bearer ${token}` } };
+    const config = { headers: { Authorization: `${token}` } };
     try {
       await axios.delete(`http://localhost:3000/api/posts/${id}`, config);
       fetchPosts();
