@@ -3,6 +3,7 @@ import axios from "axios";
 
 const BlogPage = () => {
   const baseURL = "https://panini8-backend-ie4d.onrender.com"
+  // const baseURL = "http://localhost:3000";
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({ title: "", content: "" });
   const [editingId, setEditingId] = useState(null);
@@ -27,7 +28,7 @@ const BlogPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { headers: { Authorization: `${token}` } };
+    const config = { headers: { Authorization: `Bearer ${token}` } };
 
     try {
       if (editingId) {
@@ -53,7 +54,7 @@ const BlogPage = () => {
   };
 
   const handleDelete = async (id) => {
-    const config = { headers: { Authorization: `${token}` } };
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     try {
       await axios.delete(`${baseURL}/api/posts/${id}`, config);
       fetchPosts();

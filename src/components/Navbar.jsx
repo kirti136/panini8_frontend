@@ -17,18 +17,33 @@ const Navbar = () => {
         </Link>
 
         <div className="space-x-4">
-          <Link to="/" className="hover:text-gray-300">Home</Link>
+          <Link to="/" className="hover:text-gray-300">
+            Home
+          </Link>
+          <Link to="/blogs" className="hover:text-gray-300">
+            Blog
+          </Link>
           {token ? (
             <>
-              <Link to="/blog" className="hover:text-gray-300">Blog</Link>
+              <Link to="/create" className="hover:text-gray-300">
+                Create Blog
+              </Link>
+              <Link to="/profile" className="hover:text-gray-300">
+                Profile
+              </Link>
+
               <button onClick={handleLogout} className="hover:text-red-400">
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="hover:text-gray-300">Login</Link>
-              <Link to="/signup" className="hover:text-gray-300">Signup</Link>
+              <Link to="/login" className="hover:text-gray-300">
+                Login
+              </Link>
+              <Link to="/signup" className="hover:text-gray-300">
+                Signup
+              </Link>
             </>
           )}
         </div>

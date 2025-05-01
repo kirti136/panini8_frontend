@@ -6,7 +6,7 @@ const Home = () => {
 
   const handleCreateBlog = () => {
     if (token) {
-      navigate("/blog");
+      navigate("/create");
     } else {
       navigate("/login");
     }
